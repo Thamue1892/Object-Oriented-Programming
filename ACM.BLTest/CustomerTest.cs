@@ -21,7 +21,7 @@ namespace ACM.BLTest
             string actual = customer.FullName;
 
             //-- Assert
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -36,7 +36,7 @@ namespace ACM.BLTest
             string actual = customer.FullName;
 
             //-- Assert
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -51,7 +51,30 @@ namespace ACM.BLTest
             string actual = customer.FullName;
 
             //-- Assert
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void StaticTest()
+        {
+            //-- Arrange
+            var c1 = new Customer();
+            c1.FirstName = "Mbulelo";
+            Customer.InstanceCount++;
+
+            var c2 = new Customer();
+            c2.FirstName = "Vuyolwethu";
+            Customer.InstanceCount++;
+
+            var c3 = new Customer();
+            c3.FirstName = "Brandon";
+            Customer.InstanceCount++;
+
+            //-- Act
+
+            //-- Assert
+            Assert.AreEqual(3, Customer.InstanceCount);
+
         }
     }
 }
